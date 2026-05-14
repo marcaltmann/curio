@@ -1,0 +1,53 @@
+# Curio
+
+A media library built with Django.
+
+## Requirements
+
+- Python 3.14+
+- Node.js (for frontend assets)
+
+## Setup
+
+```bash
+# Install Python dependencies
+uv sync
+
+# Install Node dependencies
+npm install
+
+# Build frontend assets
+npm run build
+
+# Apply database migrations
+uv run manage.py migrate
+
+# Start the development server
+uv run manage.py runserver
+```
+
+## Development
+
+Run tests:
+
+```bash
+uv run manage.py test
+```
+
+Build and watch frontend assets:
+
+```bash
+npm run dev
+```
+
+## Translations
+
+```bash
+# Extract/update translatable strings
+uv run manage.py makemessages -a
+
+# Compile translations
+uv run manage.py compilemessages
+```
+
+Supported languages: German (`de`), English (`en`, source language).
