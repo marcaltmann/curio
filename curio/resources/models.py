@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 class AudioResource(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('title'))
     file = models.FileField(upload_to='audio/', verbose_name=_('file'))
+    file_size = models.PositiveIntegerField(default=0, verbose_name=_('file size'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('updated at'))
 

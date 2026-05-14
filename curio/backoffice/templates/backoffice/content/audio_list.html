@@ -4,22 +4,25 @@
 {% block content %}
     <div class="container">
         <h1>{% trans "Audio" %}</h1>
+        <a href="{% url 'backoffice_audio_upload' %}">{% trans "Upload" %}</a>
         <table>
             <thead>
                 <tr>
                     <th>{% trans "Title" %}</th>
+                    <th>{% trans "File size" %}</th>
                     <th>{% trans "Created" %}</th>
                 </tr>
             </thead>
             <tbody>
                 {% for audio in audio_list %}
                     <tr>
-                        <td>{{ audio.title }}</td>
+                        <td><a href="{{ audio.file.url }}">{{ audio.title }}</a></td>
+                        <td>{{ audio.file_size|filesizeformat }}</td>
                         <td>{{ audio.created_at }}</td>
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="2">{% trans "No audio resources found." %}</td>
+                        <td colspan="3">{% trans "No audio resources found." %}</td>
                     </tr>
                 {% endfor %}
             </tbody>

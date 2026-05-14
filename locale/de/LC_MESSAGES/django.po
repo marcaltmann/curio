@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-14 21:14+0200\n"
+"POT-Creation-Date: 2026-05-14 22:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: curio/backoffice/templates/backoffice/_sidebar.html:5
+#: curio/backoffice/templates/backoffice/_sidebar.html:6
+msgid "Overview"
+msgstr ""
+
+#: curio/backoffice/templates/backoffice/_sidebar.html:8
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: curio/backoffice/templates/backoffice/_sidebar.html:8
+#: curio/backoffice/templates/backoffice/_sidebar.html:13
 msgid "Content"
 msgstr "Inhalte"
 
-#: curio/backoffice/templates/backoffice/_sidebar.html:10
+#: curio/backoffice/templates/backoffice/_sidebar.html:15
 #: curio/backoffice/templates/backoffice/content/audio_list.html:3
 #: curio/backoffice/templates/backoffice/content/audio_list.html:6
 msgid "Audio"
 msgstr "Audio"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:10
+#: curio/backoffice/templates/backoffice/content/audio_list.html:7
+#: curio/backoffice/templates/backoffice/content/audio_upload.html:11
+msgid "Upload"
+msgstr "Hochladen"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:11
 msgid "Title"
 msgstr "Titel"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:11
+#: curio/backoffice/templates/backoffice/content/audio_list.html:12
+msgid "File size"
+msgstr "Dateigröße"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:13
 msgid "Created"
 msgstr "Erstellt"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:22
+#: curio/backoffice/templates/backoffice/content/audio_list.html:25
 msgid "No audio resources found."
 msgstr "Keine Audio-Ressourcen gefunden."
+
+#: curio/backoffice/templates/backoffice/content/audio_upload.html:3
+#: curio/backoffice/templates/backoffice/content/audio_upload.html:6
+msgid "Upload Audio"
+msgstr "Audio hochladen"
+
+#: curio/backoffice/templates/backoffice/content/audio_upload.html:9
+msgid "Files"
+msgstr "Dateien"
 
 #: curio/backoffice/templates/backoffice/dashboard.html:3
 #: curio/backoffice/templates/backoffice/dashboard.html:6
@@ -70,18 +92,22 @@ msgid "file"
 msgstr "Datei"
 
 #: curio/resources/models.py:8
+msgid "file size"
+msgstr "Dateigröße"
+
+#: curio/resources/models.py:9
 msgid "created at"
 msgstr "Erstellt am"
 
-#: curio/resources/models.py:9
+#: curio/resources/models.py:10
 msgid "updated at"
 msgstr "Aktualisiert am"
 
-#: curio/resources/models.py:12
+#: curio/resources/models.py:13
 msgid "audio resource"
 msgstr "Audio-Ressource"
 
-#: curio/resources/models.py:13
+#: curio/resources/models.py:14
 msgid "audio resources"
 msgstr "Audio-Ressourcen"
 
