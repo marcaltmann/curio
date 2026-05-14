@@ -1,4 +1,5 @@
 import io
+from unittest.mock import patch
 
 import pytest
 from django.urls import reverse
@@ -31,18 +32,16 @@ def test_audio_upload_get_returns_200(client):
     assert response.status_code == 200
 
 
-# TODO: Use pytest-mock
 @pytest.mark.django_db
-def test_audio_upload_post_calls_use_case_and_redirects(client, monkeypatch):
-    calls = []
-    monkeypatch.setattr('curio.backoffice.views.upload_audio_files', lambda files: calls.append(files))
+def test_audio_upload_post_calls_use_case_and_redirects(client):
     f = io.BytesIO(b'audio data')
     f.name = 'my-podcast.mp3'
-    response = client.post(
-        reverse('backoffice_audio_upload'),
-        {'files': [f]},
-        format='multipart',
-    )
-    assert calls
+    with patch('curio.backoffice.views.upload_audio_files') as mock:
+        response = client.post(
+            reverse('backoffice_audio_upload'),
+            {'files': [f]},
+            format='multipart',
+        )
+    assert mock.called
     assert response.status_code == 302
     assert response['Location'] == reverse('backoffice_audio_list')

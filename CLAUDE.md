@@ -8,8 +8,8 @@ Use `uv run` to execute management commands (Python 3.14, managed via `.python-v
 
 ```bash
 uv run manage.py runserver
-uv run manage.py test                          # all tests
-uv run manage.py test curio.my_account      # single app
+uv run pytest                                  # all tests
+uv run pytest curio/my_account/                # single app
 uv run manage.py migrate
 uv run manage.py makemessages -l de -l en      # extract translatable strings (first run)
 uv run manage.py makemessages -a               # update existing .po files
@@ -22,7 +22,7 @@ Use single-quote string literals in Python.
 
 ## Testing
 
-TDD is preferred. Write tests before or alongside implementation. Use `uv run pytest`.
+TDD is preferred. Write tests before or alongside implementation. Use `uv run pytest` — not `manage.py test`.
 
 ## Git
 
