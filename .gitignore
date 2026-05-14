@@ -1,7 +1,7 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
-build/
+staticfiles/
 dist/
 wheels/
 *.egg-info
@@ -13,4 +13,4 @@ wheels/
 *.mo
 /db.sqlite3
 /node_modules
-/vite_assets_dist
+/dist
