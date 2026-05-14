@@ -1,0 +1,8 @@
+.container {
+  margin-inline: auto;
+  padding-inline: 1rlh;
+}
+
+.container-sm  { width: min(100%, 25rlh); }
+.container-md  { width: min(100%, 40rlh); }
+.container-lg  { width: min(100%, 60rlh); }

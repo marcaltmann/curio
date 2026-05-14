@@ -13,17 +13,15 @@
         <title>
             {% block title %}Curio{% endblock %}
         </title>
-        <link rel="icon" href="{% static 'favicon.png' %}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.png' %}">
         {% vite_hmr_client %}
-        {% vite_asset 'assets/js/main.js' %}
+        {% vite_asset 'assets/js/public.js' %}
     </head>
     <body class="site">
         {% include "_messages.html" %}
         {% include "_header.html" %}
         <main class="site__main">
-            <div class="container u-mt u-mb-large">
-                {% block content %}{% endblock content %}
-            </div>
+            {% block content %}{% endblock content %}
         </main>
         {% include "_footer.html" %}
         {% block javascript %}{% endblock %}
