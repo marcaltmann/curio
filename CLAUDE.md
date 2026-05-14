@@ -16,6 +16,10 @@ uv run manage.py makemessages -a               # update existing .po files
 uv run manage.py compilemessages               # compile .po → .mo
 ```
 
+## Testing
+
+TDD is preferred. Write tests before or alongside implementation. Use `uv run pytest`.
+
 ## Git
 
 Keep commit messages short (one line is usually enough). Do not add `Co-Authored-By` trailers.
