@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-14 22:21+0200\n"
+"POT-Creation-Date: 2026-05-14 23:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,18 +46,30 @@ msgid "Title"
 msgstr "Titel"
 
 #: curio/backoffice/templates/backoffice/content/audio_list.html:12
-msgid "File size"
-msgstr "Dateigröße"
-
-#: curio/backoffice/templates/backoffice/content/audio_list.html:13
 msgid "Duration"
 msgstr "Dauer"
 
+#: curio/backoffice/templates/backoffice/content/audio_list.html:13
+msgid "Bitrate"
+msgstr "Bitrate"
+
 #: curio/backoffice/templates/backoffice/content/audio_list.html:14
+msgid "Sample rate"
+msgstr "Abtastrate"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:15
+msgid "Channels"
+msgstr "Kanäle"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:16
+msgid "File size"
+msgstr "Dateigröße"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:17
 msgid "Created"
 msgstr "Erstellt"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:27
+#: curio/backoffice/templates/backoffice/content/audio_list.html:33
 msgid "No audio resources found."
 msgstr "Keine Audio-Ressourcen gefunden."
 
@@ -78,6 +90,14 @@ msgstr "Backoffice"
 #: curio/core/apps.py:7
 msgid "Core"
 msgstr "Core"
+
+#: curio/core/templatetags/curio_tags.py:34
+msgid "Mono"
+msgstr "Mono"
+
+#: curio/core/templatetags/curio_tags.py:34
+msgid "Stereo"
+msgstr "Stereo"
 
 #: curio/my_account/apps.py:7
 msgid "My Account"
@@ -104,18 +124,30 @@ msgid "duration"
 msgstr "Dauer"
 
 #: curio/resources/models.py:10
+msgid "bitrate"
+msgstr "Bitrate"
+
+#: curio/resources/models.py:11
+msgid "sample rate"
+msgstr "Abtastrate"
+
+#: curio/resources/models.py:12
+msgid "channels"
+msgstr "Kanäle"
+
+#: curio/resources/models.py:13
 msgid "created at"
 msgstr "Erstellt am"
 
-#: curio/resources/models.py:11
+#: curio/resources/models.py:14
 msgid "updated at"
 msgstr "Aktualisiert am"
 
-#: curio/resources/models.py:14
+#: curio/resources/models.py:17
 msgid "audio resource"
 msgstr "Audio-Ressource"
 
-#: curio/resources/models.py:15
+#: curio/resources/models.py:18
 msgid "audio resources"
 msgstr "Audio-Ressourcen"
 
