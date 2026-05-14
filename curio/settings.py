@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'allauth',
     'curio.core',
     'curio.my_account',
+    'curio.resources',
     'django_vite',
     'django.contrib.admin',
     'django.contrib.auth',
