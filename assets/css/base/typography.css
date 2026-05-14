@@ -1,4 +1,14 @@
 :root {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.5rem;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--color-accent) 75%, var(--color-ink));
 }

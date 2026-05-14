@@ -5,35 +5,37 @@
     <div class="container">
         <h1>{% trans "Audio" %}</h1>
         <a href="{% url 'backoffice_audio_upload' %}">{% trans "Upload" %}</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>{% trans "Title" %}</th>
-                    <th>{% trans "Duration" %}</th>
-                    <th>{% trans "Bitrate" %}</th>
-                    <th>{% trans "Sample rate" %}</th>
-                    <th>{% trans "Channels" %}</th>
-                    <th>{% trans "File size" %}</th>
-                    <th>{% trans "Created" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for audio in audio_list %}
+        <div class="scroll-x:auto">
+            <table class="data-table">
+                <thead>
                     <tr>
-                        <td><a href="{{ audio.file.url }}">{{ audio.title }}</a></td>
-                        <td>{{ audio.duration|duration|default:"–" }}</td>
-                        <td>{{ audio.bitrate|kbps|default:"–" }}</td>
-                        <td>{{ audio.sample_rate|khz|default:"–" }}</td>
-                        <td>{{ audio.channels|channels_label|default:"–" }}</td>
-                        <td>{{ audio.file_size|filesizeformat }}</td>
-                        <td>{{ audio.created_at }}</td>
+                        <th>{% trans "Title" %}</th>
+                        <th data-align="end">{% trans "Duration" %}</th>
+                        <th data-align="end">{% trans "Bitrate" %}</th>
+                        <th data-align="end">{% trans "Sample rate" %}</th>
+                        <th data-align="end">{% trans "Channels" %}</th>
+                        <th data-align="end">{% trans "File size" %}</th>
+                        <th>{% trans "Created" %}</th>
                     </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="7">{% trans "No audio resources found." %}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for audio in audio_list %}
+                        <tr>
+                            <td><a href="{{ audio.file.url }}">{{ audio.title }}</a></td>
+                            <td data-align="end">{{ audio.duration|duration|default:"–" }}</td>
+                            <td data-align="end">{{ audio.bitrate|kbps|default:"–" }}</td>
+                            <td data-align="end">{{ audio.sample_rate|khz|default:"–" }}</td>
+                            <td data-align="end">{{ audio.channels|channels_label|default:"–" }}</td>
+                            <td data-align="end">{{ audio.file_size|filesizeformat }}</td>
+                            <td>{{ audio.created_at }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7">{% trans "No audio resources found." %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

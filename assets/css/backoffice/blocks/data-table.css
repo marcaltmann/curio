@@ -1,0 +1,33 @@
+.data-table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.5rlh 0.5rlh;
+    text-align: left;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent);
+}
+
+.data-table th {
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.55;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--color-ink) 4%, transparent);
+}
+
+.data-table tbody tr:hover {
+    background-color: color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+
+.data-table [data-align='end'] {
+    text-align: end;
+}

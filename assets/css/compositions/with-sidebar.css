@@ -3,3 +3,7 @@
   grid-template-columns: var(--sidebar-width, 10rlh) 1fr;
   min-block-size: 100svh;
 }
+
+.with-sidebar > * {
+  min-width: 0;
+}

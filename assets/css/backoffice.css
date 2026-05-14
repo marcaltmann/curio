@@ -8,6 +8,7 @@
 @import "./blocks/button.css" layer(blocks);
 @import "./blocks/card.css" layer(blocks);
 @import "./utilities/margin-lh.css" layer(utilities);
+@import "./utilities/overflow.css" layer(utilities);
 @import "./backoffice/tokens.css" layer(base);        /* overrides */
 @import "./backoffice/blocks/data-table.css" layer(blocks);
 @import "./backoffice/blocks/sidebar.css" layer(blocks);
