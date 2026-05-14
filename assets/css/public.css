@@ -1,5 +1,6 @@
 @import "./base/normalize.css" layer(base);
 @import "./base/tokens.css" layer(base);
+@import "./base/typography.css" layer(base);
 @import "./compositions/cluster.css" layer(compositions);
 @import "./compositions/container.css" layer(compositions);
 @import "./compositions/stack.css" layer(compositions);
