@@ -1,0 +1,14 @@
+.mt-lh { margin-block-start: 1rlh !important; }
+.mb-lh { margin-block-end: 1rlh !important; }
+.ml-lh { margin-inline-start: 1rlh !important; }
+.mr-lh { margin-inline-end: 1rlh !important; }
+
+.mt-lh-half { margin-block-start: 0.5rlh !important; }
+.mb-lh-half { margin-block-end: 0.5rlh !important; }
+.ml-lh-half { margin-inline-start: 0.5rlh !important; }
+.mr-lh-half { margin-inline-end: 0.5rlh !important; }
+
+.mt-lh-2x { margin-block-start: 2rlh !important; }
+.mb-lh-2x { margin-block-end: 2rlh !important; }
+.ml-lh-2x { margin-inline-start: 2rlh !important; }
+.mr-lh-2x { margin-inline-end: 2rlh !important; }
