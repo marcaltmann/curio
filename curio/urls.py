@@ -6,6 +6,7 @@ import curio.core.views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('backoffice/', include('curio.backoffice.urls')),
     path('accounts/', include('allauth.urls')),
     path('', core_views.welcome, name='welcome'),
 ]

@@ -26,6 +26,7 @@ DJANGO_ENV = 'development'
 INSTALLED_APPS = [
     'allauth.account',
     'allauth',
+    'curio.backoffice',
     'curio.core',
     'curio.my_account',
     'curio.resources',
