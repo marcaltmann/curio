@@ -5,14 +5,14 @@
     <section class="sidebar__section">
         <h2 class="sidebar__section-heading">{% trans "Overview" %}</h2>
         <ul class="sidebar__nav" role="list">
-            <li><a href="{% url 'backoffice_dashboard' %}">{% trans "Dashboard" %}</a></li>
+            <li><a href="{% url 'backoffice_dashboard' %}" {% if request.resolver_match.url_name == 'backoffice_dashboard' %}aria-current="page"{% endif %}>{% trans "Dashboard" %}</a></li>
         </ul>
     </section>
 
     <section class="sidebar__section">
         <h2 class="sidebar__section-heading">{% trans "Content" %}</h2>
         <ul class="sidebar__nav" role="list">
-            <li><a href="{% url 'backoffice_audio_list' %}">{% trans "Audio" %}</a></li>
+            <li><a href="{% url 'backoffice_audio_list' %}" {% if 'backoffice_audio' in request.resolver_match.url_name %}aria-current="page"{% endif %}>{% trans "Audio" %}</a></li>
         </ul>
     </section>
 </nav>

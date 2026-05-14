@@ -34,6 +34,11 @@
   background-color: color-mix(in srgb, var(--color-paper) 10%, transparent);
 }
 
+.sidebar__nav [aria-current='page'] {
+  background-color: color-mix(in srgb, var(--color-paper) 15%, transparent);
+  font-weight: bold;
+}
+
 .sidebar__section {
   display: flex;
   flex-direction: column;
