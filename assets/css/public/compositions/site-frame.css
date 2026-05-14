@@ -1,0 +1,11 @@
+.site-frame {
+  --min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  min-block-size: var(--min-height);
+}
+
+.site-frame > :last-child {
+  margin-block-start: auto;
+}

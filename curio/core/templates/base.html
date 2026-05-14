@@ -17,10 +17,10 @@
         {% vite_hmr_client %}
         {% vite_asset 'assets/js/public.js' %}
     </head>
-    <body class="site">
+    <body class="site-frame">
         {% include "_messages.html" %}
         {% include "_header.html" %}
-        <main class="site__main">
+        <main>
             {% block content %}{% endblock content %}
         </main>
         {% include "_footer.html" %}

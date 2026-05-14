@@ -6,5 +6,6 @@
 @import "./blocks/button.css" layer(blocks);
 @import "./blocks/card.css" layer(blocks);
 @import "./public/tokens.css" layer(base);       /* overrides */
+@import "./public/compositions/site-frame.css" layer(compositions);
 @import "./public/blocks/hero.css" layer(blocks);
 @import "./public/blocks/pricing.css" layer(blocks);
