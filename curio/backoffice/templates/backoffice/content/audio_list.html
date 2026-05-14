@@ -21,7 +21,7 @@
                 <tbody>
                     {% for audio in audio_list %}
                         <tr>
-                            <td><a href="{{ audio.file.url }}">{{ audio.title }}</a></td>
+                            <td><a href="{% url 'backoffice_audio_detail' audio.pk %}">{{ audio.title }}</a></td>
                             <td data-align="end">{{ audio.duration|duration|default:"–" }}</td>
                             <td data-align="end">{{ audio.bitrate|kbps|default:"–" }}</td>
                             <td data-align="end">{{ audio.sample_rate|khz|default:"–" }}</td>

@@ -33,6 +33,26 @@ def test_audio_upload_get_returns_200(client):
 
 
 @pytest.mark.django_db
+def test_audio_detail_returns_200(client):
+    audio = AudioResource.objects.create(title='Detail Test', file='audio/test.mp3')
+    response = client.get(reverse('backoffice_audio_detail', args=[audio.pk]))
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_audio_detail_shows_title(client):
+    audio = AudioResource.objects.create(title='Detail Test', file='audio/test.mp3')
+    response = client.get(reverse('backoffice_audio_detail', args=[audio.pk]))
+    assert b'Detail Test' in response.content
+
+
+@pytest.mark.django_db
+def test_audio_detail_returns_404_for_missing(client):
+    response = client.get(reverse('backoffice_audio_detail', args=[9999]))
+    assert response.status_code == 404
+
+
+@pytest.mark.django_db
 def test_audio_upload_post_calls_use_case_and_redirects(client):
     f = io.BytesIO(b'audio data')
     f.name = 'my-podcast.mp3'
