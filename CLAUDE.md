@@ -20,6 +20,8 @@ uv run manage.py compilemessages               # compile .po → .mo
 
 Use single-quote string literals in Python.
 
+**CSS:** Follow the [CUBE CSS](https://cube.fyi/) methodology — Compositions, Utilities, Blocks, Exceptions.
+
 ## Testing
 
 TDD is preferred. Write tests before or alongside implementation. Use `uv run pytest` — not `manage.py test`.
