@@ -16,6 +16,10 @@ uv run manage.py makemessages -a               # update existing .po files
 uv run manage.py compilemessages               # compile .po → .mo
 ```
 
+## Code style
+
+Use single-quote string literals in Python.
+
 ## Testing
 
 TDD is preferred. Write tests before or alongside implementation. Use `uv run pytest`.
