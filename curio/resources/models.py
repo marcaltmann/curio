@@ -6,6 +6,7 @@ class AudioResource(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('title'))
     file = models.FileField(upload_to='audio/', verbose_name=_('file'))
     file_size = models.PositiveIntegerField(default=0, verbose_name=_('file size'))
+    duration = models.DurationField(null=True, blank=True, verbose_name=_('duration'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('updated at'))
 
