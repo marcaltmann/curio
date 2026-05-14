@@ -151,6 +151,9 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static', BASE_DIR / 'dist']
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 DJANGO_VITE = {
     'default': {
         'dev_mode': DEBUG,

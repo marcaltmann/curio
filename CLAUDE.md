@@ -29,3 +29,5 @@ Keep commit messages short (one line is usually enough). Do not add `Co-Authored
 **i18n:** `LocaleMiddleware` is active. Supported languages are `de` and `en` (default). Translation files live in `locale/` at the project root. Only German needs `.po` entries — English is the source language and has no `.po` file.
 
 **Dependencies** (see `pyproject.toml`): Django 6, `django-allauth` (installed but not yet wired into `INSTALLED_APPS`), `psycopg` (PostgreSQL driver installed but SQLite is used in development).
+
+**Models:** Every model must include `created_at = models.DateTimeField(auto_now_add=True)` and `updated_at = models.DateTimeField(auto_now=True)`.

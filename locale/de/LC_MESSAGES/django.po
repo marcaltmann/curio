@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-14 16:56+0200\n"
+"POT-Creation-Date: 2026-05-14 19:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,10 +26,38 @@ msgstr "Core"
 msgid "My Account"
 msgstr "Mein Konto"
 
-#: curio/settings.py:136
+#: curio/resources/apps.py:7
+msgid "Resources"
+msgstr "Ressourcen"
+
+#: curio/resources/models.py:6
+msgid "title"
+msgstr "Titel"
+
+#: curio/resources/models.py:7
+msgid "file"
+msgstr "Datei"
+
+#: curio/resources/models.py:8
+msgid "created at"
+msgstr "Erstellt am"
+
+#: curio/resources/models.py:9
+msgid "updated at"
+msgstr "Aktualisiert am"
+
+#: curio/resources/models.py:12
+msgid "audio resource"
+msgstr "Audio-Ressource"
+
+#: curio/resources/models.py:13
+msgid "audio resources"
+msgstr "Audio-Ressourcen"
+
+#: curio/settings.py:138
 msgid "German"
 msgstr "Deutsch"
 
-#: curio/settings.py:137
+#: curio/settings.py:139
 msgid "English"
 msgstr "Englisch"
