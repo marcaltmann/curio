@@ -14,13 +14,14 @@
         {% vite_hmr_client %}
         {% vite_asset 'assets/js/backoffice.js' %}
     </head>
-    <body class="site-frame">
+    <body>
         {% include "_messages.html" %}
-        {% include "_header.html" %}
-        <main>
-            {% block content %}{% endblock content %}
-        </main>
-        {% include "_footer.html" %}
+        <div class="with-sidebar">
+            {% include "backoffice/_sidebar.html" %}
+            <main>
+                {% block content %}{% endblock content %}
+            </main>
+        </div>
         {% block javascript %}{% endblock %}
     </body>
 </html>
