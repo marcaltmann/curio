@@ -7,4 +7,9 @@ urlpatterns = [
     path('content/audio/', views.audio_list, name='backoffice_audio_list'),
     path('content/audio/<int:pk>/', views.audio_detail, name='backoffice_audio_detail'),
     path('content/audio/upload/', views.audio_upload, name='backoffice_audio_upload'),
+    path('content/images/', views.image_list, name='backoffice_image_list'),
+    path(
+        'content/images/<int:pk>/', views.image_detail, name='backoffice_image_detail'
+    ),
+    path('content/images/upload/', views.image_upload, name='backoffice_image_upload'),
 ]

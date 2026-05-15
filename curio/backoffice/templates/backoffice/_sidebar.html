@@ -13,6 +13,7 @@
         <h2 class="sidebar__section-heading">{% trans "Content" %}</h2>
         <ul class="sidebar__nav" role="list">
             <li><a href="{% url 'backoffice_audio_list' %}" {% if 'backoffice_audio' in request.resolver_match.url_name %}aria-current="page"{% endif %}>{% trans "Audio" %}</a></li>
+            <li><a href="{% url 'backoffice_image_list' %}" {% if 'backoffice_image' in request.resolver_match.url_name %}aria-current="page"{% endif %}>{% trans "Images" %}</a></li>
         </ul>
     </section>
 </nav>

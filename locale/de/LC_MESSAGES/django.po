@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-14 23:16+0200\n"
+"POT-Creation-Date: 2026-05-16 00:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: curio/backoffice/templates/backoffice/_sidebar.html:6
 msgid "Overview"
-msgstr ""
+msgstr "Übersicht"
 
 #: curio/backoffice/templates/backoffice/_sidebar.html:8
 msgid "Dashboard"
@@ -31,45 +31,71 @@ msgid "Content"
 msgstr "Inhalte"
 
 #: curio/backoffice/templates/backoffice/_sidebar.html:15
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:6
 #: curio/backoffice/templates/backoffice/content/audio_list.html:3
 #: curio/backoffice/templates/backoffice/content/audio_list.html:6
 msgid "Audio"
 msgstr "Audio"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:7
-#: curio/backoffice/templates/backoffice/content/audio_upload.html:11
-msgid "Upload"
-msgstr "Hochladen"
+#: curio/backoffice/templates/backoffice/_sidebar.html:16
+#: curio/backoffice/templates/backoffice/content/image_detail.html:6
+#: curio/backoffice/templates/backoffice/content/image_list.html:3
+#: curio/backoffice/templates/backoffice/content/image_list.html:6
+msgid "Images"
+msgstr "Bilder"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:11
-msgid "Title"
-msgstr "Titel"
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:10
+#: curio/backoffice/templates/backoffice/content/image_detail.html:10
+msgid "File"
+msgstr "Datei"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:12
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:12
+#: curio/backoffice/templates/backoffice/content/audio_list.html:13
 msgid "Duration"
 msgstr "Dauer"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:13
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:14
+#: curio/backoffice/templates/backoffice/content/audio_list.html:14
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:14
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:16
+#: curio/backoffice/templates/backoffice/content/audio_list.html:15
 msgid "Sample rate"
 msgstr "Abtastrate"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:15
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:18
+#: curio/backoffice/templates/backoffice/content/audio_list.html:16
 msgid "Channels"
 msgstr "Kanäle"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:16
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:20
+#: curio/backoffice/templates/backoffice/content/audio_list.html:17
+#: curio/backoffice/templates/backoffice/content/image_detail.html:28
+#: curio/backoffice/templates/backoffice/content/image_list.html:16
 msgid "File size"
 msgstr "Dateigröße"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:17
+#: curio/backoffice/templates/backoffice/content/audio_detail.html:22
+#: curio/backoffice/templates/backoffice/content/audio_list.html:18
+#: curio/backoffice/templates/backoffice/content/image_detail.html:30
+#: curio/backoffice/templates/backoffice/content/image_list.html:17
 msgid "Created"
 msgstr "Erstellt"
 
-#: curio/backoffice/templates/backoffice/content/audio_list.html:33
+#: curio/backoffice/templates/backoffice/content/audio_list.html:7
+#: curio/backoffice/templates/backoffice/content/audio_upload.html:11
+#: curio/backoffice/templates/backoffice/content/image_list.html:7
+#: curio/backoffice/templates/backoffice/content/image_upload.html:11
+msgid "Upload"
+msgstr "Hochladen"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:12
+#: curio/backoffice/templates/backoffice/content/image_list.html:12
+msgid "Title"
+msgstr "Titel"
+
+#: curio/backoffice/templates/backoffice/content/audio_list.html:34
 msgid "No audio resources found."
 msgstr "Keine Audio-Ressourcen gefunden."
 
@@ -79,8 +105,53 @@ msgid "Upload Audio"
 msgstr "Audio hochladen"
 
 #: curio/backoffice/templates/backoffice/content/audio_upload.html:9
+#: curio/backoffice/templates/backoffice/content/image_upload.html:9
 msgid "Files"
 msgstr "Dateien"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:12
+#: curio/backoffice/templates/backoffice/content/image_list.html:13
+msgid "Dimensions"
+msgstr "Abmessungen"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:16
+#: curio/backoffice/templates/backoffice/content/image_list.html:14
+msgid "Format"
+msgstr "Format"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:18
+msgid "Color mode"
+msgstr "Farbmodus"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:20
+#: curio/resources/models.py:38
+msgid "ICC profile"
+msgstr "ICC-Profil"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:22
+msgid "Taken at"
+msgstr "Aufgenommen am"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:24
+msgid "Camera make"
+msgstr "Kamerahersteller"
+
+#: curio/backoffice/templates/backoffice/content/image_detail.html:26
+msgid "Camera model"
+msgstr "Kameramodell"
+
+#: curio/backoffice/templates/backoffice/content/image_list.html:15
+msgid "Taken"
+msgstr "Aufgenommen"
+
+#: curio/backoffice/templates/backoffice/content/image_list.html:34
+msgid "No image resources found."
+msgstr "Keine Bild-Ressourcen gefunden."
+
+#: curio/backoffice/templates/backoffice/content/image_upload.html:3
+#: curio/backoffice/templates/backoffice/content/image_upload.html:6
+msgid "Upload Images"
+msgstr "Bilder hochladen"
 
 #: curio/backoffice/templates/backoffice/dashboard.html:3
 #: curio/backoffice/templates/backoffice/dashboard.html:6
@@ -107,15 +178,15 @@ msgstr "Mein Konto"
 msgid "Resources"
 msgstr "Ressourcen"
 
-#: curio/resources/models.py:6
+#: curio/resources/models.py:6 curio/resources/models.py:31
 msgid "title"
 msgstr "Titel"
 
-#: curio/resources/models.py:7
+#: curio/resources/models.py:7 curio/resources/models.py:32
 msgid "file"
 msgstr "Datei"
 
-#: curio/resources/models.py:8
+#: curio/resources/models.py:8 curio/resources/models.py:33
 msgid "file size"
 msgstr "Dateigröße"
 
@@ -123,33 +194,69 @@ msgstr "Dateigröße"
 msgid "duration"
 msgstr "Dauer"
 
-#: curio/resources/models.py:10
+#: curio/resources/models.py:11
 msgid "bitrate"
 msgstr "Bitrate"
 
-#: curio/resources/models.py:11
+#: curio/resources/models.py:14
 msgid "sample rate"
 msgstr "Abtastrate"
 
-#: curio/resources/models.py:12
+#: curio/resources/models.py:17
 msgid "channels"
 msgstr "Kanäle"
 
-#: curio/resources/models.py:13
+#: curio/resources/models.py:19 curio/resources/models.py:42
 msgid "created at"
 msgstr "Erstellt am"
 
-#: curio/resources/models.py:14
+#: curio/resources/models.py:20 curio/resources/models.py:43
 msgid "updated at"
 msgstr "Aktualisiert am"
 
-#: curio/resources/models.py:17
+#: curio/resources/models.py:23
 msgid "audio resource"
 msgstr "Audio-Ressource"
 
-#: curio/resources/models.py:18
+#: curio/resources/models.py:24
 msgid "audio resources"
 msgstr "Audio-Ressourcen"
+
+#: curio/resources/models.py:34
+msgid "width"
+msgstr "Breite"
+
+#: curio/resources/models.py:35
+msgid "height"
+msgstr "Höhe"
+
+#: curio/resources/models.py:36
+msgid "format"
+msgstr "Format"
+
+#: curio/resources/models.py:37
+msgid "color mode"
+msgstr "Farbmodus"
+
+#: curio/resources/models.py:39
+msgid "taken at"
+msgstr "Aufgenommen am"
+
+#: curio/resources/models.py:40
+msgid "camera make"
+msgstr "Kamerahersteller"
+
+#: curio/resources/models.py:41
+msgid "camera model"
+msgstr "Kameramodell"
+
+#: curio/resources/models.py:46
+msgid "image resource"
+msgstr "Bild-Ressource"
+
+#: curio/resources/models.py:47
+msgid "image resources"
+msgstr "Bild-Ressourcen"
 
 #: curio/settings.py:138
 msgid "German"

@@ -1,11 +1,11 @@
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-from .models import AudioResource
-from .use_cases import upload_audio_files
+from .models import AudioResource, ImageResource
+from .use_cases import upload_audio_files, upload_image_files
 
 EMPTY_META = {
     'title': None,
@@ -80,3 +80,103 @@ def test_upload_audio_files_derives_title_from_filename():
         upload_audio_files([SimpleUploadedFile(filename, b'data')])
     titles = set(AudioResource.objects.values_list('title', flat=True))
     assert titles == {'My Podcast', 'Another Episode', 'Simple'}
+
+
+EMPTY_IMAGE_META = {
+    'width': None,
+    'height': None,
+    'format': None,
+    'color_mode': None,
+    'icc_profile': None,
+    'taken_at': None,
+    'camera_make': None,
+    'camera_model': None,
+}
+
+
+@pytest.mark.django_db
+def test_upload_image_files_creates_resources():
+    f = SimpleUploadedFile('my-photo.jpg', b'image data')
+    with patch(
+        'curio.resources.use_cases.extract_image_metadata',
+        return_value=EMPTY_IMAGE_META,
+    ):
+        upload_image_files([f])
+    assert ImageResource.objects.count() == 1
+    resource = ImageResource.objects.first()
+    assert resource.title == 'My Photo'
+    assert resource.file_size == len(b'image data')
+
+
+@pytest.mark.django_db
+def test_upload_image_files_stores_dimensions():
+    f = SimpleUploadedFile('photo.jpg', b'image data')
+    meta = {**EMPTY_IMAGE_META, 'width': 1920, 'height': 1080}
+    with patch('curio.resources.use_cases.extract_image_metadata', return_value=meta):
+        upload_image_files([f])
+    resource = ImageResource.objects.first()
+    assert resource.width == 1920
+    assert resource.height == 1080
+
+
+@pytest.mark.django_db
+def test_upload_image_files_stores_technical_metadata():
+    f = SimpleUploadedFile('photo.jpg', b'image data')
+    meta = {
+        **EMPTY_IMAGE_META,
+        'format': 'JPEG',
+        'color_mode': 'RGB',
+        'icc_profile': 'sRGB',
+    }
+    with patch('curio.resources.use_cases.extract_image_metadata', return_value=meta):
+        upload_image_files([f])
+    resource = ImageResource.objects.first()
+    assert resource.format == 'JPEG'
+    assert resource.color_mode == 'RGB'
+    assert resource.icc_profile == 'sRGB'
+
+
+@pytest.mark.django_db
+def test_upload_image_files_stores_exif_metadata():
+    f = SimpleUploadedFile('photo.jpg', b'image data')
+    taken = datetime(2024, 6, 15, 10, 30, 0, tzinfo=timezone.utc)
+    meta = {
+        **EMPTY_IMAGE_META,
+        'taken_at': taken,
+        'camera_make': 'Canon',
+        'camera_model': 'EOS R5',
+    }
+    with patch('curio.resources.use_cases.extract_image_metadata', return_value=meta):
+        upload_image_files([f])
+    resource = ImageResource.objects.first()
+    assert resource.taken_at == taken
+    assert resource.camera_make == 'Canon'
+    assert resource.camera_model == 'EOS R5'
+
+
+@pytest.mark.django_db
+def test_upload_image_files_stores_none_metadata_when_unreadable():
+    f = SimpleUploadedFile('photo.jpg', b'not real image')
+    upload_image_files([f])
+    resource = ImageResource.objects.first()
+    assert resource.width is None
+    assert resource.height is None
+    assert resource.format is None
+    assert resource.taken_at is None
+
+
+@pytest.mark.django_db
+def test_upload_image_files_derives_title_from_filename():
+    cases = [
+        ('my-photo.jpg', 'My Photo'),
+        ('beach_sunset.png', 'Beach Sunset'),
+        ('portrait.jpg', 'Portrait'),
+    ]
+    for filename, _ in cases:
+        with patch(
+            'curio.resources.use_cases.extract_image_metadata',
+            return_value=EMPTY_IMAGE_META,
+        ):
+            upload_image_files([SimpleUploadedFile(filename, b'data')])
+    titles = set(ImageResource.objects.values_list('title', flat=True))
+    assert titles == {'My Photo', 'Beach Sunset', 'Portrait'}

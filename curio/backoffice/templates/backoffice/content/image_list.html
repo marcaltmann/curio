@@ -1,0 +1,41 @@
+{% extends "backoffice/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Images" %} – {{ block.super }}{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1>{% trans "Images" %}</h1>
+    <a href="{% url 'backoffice_image_upload' %}">{% trans "Upload" %}</a>
+    <div class="scroll-x:auto">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>{% trans "Title" %}</th>
+            <th data-align="end">{% trans "Dimensions" %}</th>
+            <th>{% trans "Format" %}</th>
+            <th>{% trans "Taken" %}</th>
+            <th data-align="end">{% trans "File size" %}</th>
+            <th>{% trans "Created" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for image in image_list %}
+            <tr>
+              <td><a href="{% url 'backoffice_image_detail' image.pk %}">{{ image.title }}</a></td>
+              <td data-align="end">
+                {% if image.width and image.height %}{{ image.width }}×{{ image.height }}{% else %}–{% endif %}
+              </td>
+              <td>{{ image.format|default:"–" }}</td>
+              <td>{{ image.taken_at|default:"–" }}</td>
+              <td data-align="end">{{ image.file_size|filesizeformat }}</td>
+              <td>{{ image.created_at }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="6">{% trans "No image resources found." %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

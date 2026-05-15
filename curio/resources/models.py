@@ -25,3 +25,38 @@ class AudioResource(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ImageResource(models.Model):
+    title = models.CharField(max_length=255, verbose_name=_('title'))
+    file = models.ImageField(upload_to='images/', verbose_name=_('file'))
+    file_size = models.PositiveIntegerField(default=0, verbose_name=_('file size'))
+    width = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('width'))
+    height = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name=_('height')
+    )
+    format = models.CharField(
+        max_length=32, null=True, blank=True, verbose_name=_('format')
+    )
+    color_mode = models.CharField(
+        max_length=16, null=True, blank=True, verbose_name=_('color mode')
+    )
+    icc_profile = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_('ICC profile')
+    )
+    taken_at = models.DateTimeField(null=True, blank=True, verbose_name=_('taken at'))
+    camera_make = models.CharField(
+        max_length=64, null=True, blank=True, verbose_name=_('camera make')
+    )
+    camera_model = models.CharField(
+        max_length=64, null=True, blank=True, verbose_name=_('camera model')
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('updated at'))
+
+    class Meta:
+        verbose_name = _('image resource')
+        verbose_name_plural = _('image resources')
+
+    def __str__(self):
+        return self.title

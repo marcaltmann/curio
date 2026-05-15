@@ -1,0 +1,34 @@
+{% extends "backoffice/base.html" %}
+{% load i18n %}
+{% block title %}{{ image.title }} – {{ block.super }}{% endblock %}
+{% block content %}
+  <div class="container mt-lh">
+    <a href="{% url 'backoffice_image_list' %}">{% trans "Images" %}</a>
+    <h1>{{ image.title }}</h1>
+    <img class="max-w:100%" src="{{ image.file.url }}" alt="{{ image.title }}">
+    <dl class="details">
+      <dt>{% trans "File" %}</dt>
+      <dd><a href="{{ image.file.url }}">{{ image.file.name }}</a></dd>
+      <dt>{% trans "Dimensions" %}</dt>
+      <dd>
+        {% if image.width and image.height %}{{ image.width }}×{{ image.height }}{% else %}–{% endif %}
+      </dd>
+      <dt>{% trans "Format" %}</dt>
+      <dd>{{ image.format|default:"–" }}</dd>
+      <dt>{% trans "Color mode" %}</dt>
+      <dd>{{ image.color_mode|default:"–" }}</dd>
+      <dt>{% trans "ICC profile" %}</dt>
+      <dd>{{ image.icc_profile|default:"–" }}</dd>
+      <dt>{% trans "Taken at" %}</dt>
+      <dd>{{ image.taken_at|default:"–" }}</dd>
+      <dt>{% trans "Camera make" %}</dt>
+      <dd>{{ image.camera_make|default:"–" }}</dd>
+      <dt>{% trans "Camera model" %}</dt>
+      <dd>{{ image.camera_model|default:"–" }}</dd>
+      <dt>{% trans "File size" %}</dt>
+      <dd>{{ image.file_size|filesizeformat }}</dd>
+      <dt>{% trans "Created" %}</dt>
+      <dd>{{ image.created_at }}</dd>
+    </dl>
+  </div>
+{% endblock %}
