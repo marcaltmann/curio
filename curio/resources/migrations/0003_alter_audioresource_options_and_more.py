@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('resources', '0002_audioresource_updated_at'),
     ]
@@ -12,7 +11,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='audioresource',
-            options={'verbose_name': 'audio resource', 'verbose_name_plural': 'audio resources'},
+            options={
+                'verbose_name': 'audio resource',
+                'verbose_name_plural': 'audio resources',
+            },
         ),
         migrations.AlterField(
             model_name='audioresource',

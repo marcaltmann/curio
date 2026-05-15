@@ -7,7 +7,13 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from .models import AudioResource
 from .use_cases import upload_audio_files
 
-EMPTY_META = {'title': None, 'duration': None, 'bitrate': None, 'sample_rate': None, 'channels': None}
+EMPTY_META = {
+    'title': None,
+    'duration': None,
+    'bitrate': None,
+    'sample_rate': None,
+    'channels': None,
+}
 
 
 @pytest.mark.django_db
@@ -55,7 +61,10 @@ def test_upload_audio_files_stores_none_metadata_when_unreadable():
 @pytest.mark.django_db
 def test_upload_audio_files_uses_id3_title_when_available():
     f = SimpleUploadedFile('my-podcast.mp3', b'audio data')
-    with patch('curio.resources.use_cases.extract_metadata', return_value={**EMPTY_META, 'title': 'Custom Tag Title'}):
+    with patch(
+        'curio.resources.use_cases.extract_metadata',
+        return_value={**EMPTY_META, 'title': 'Custom Tag Title'},
+    ):
         upload_audio_files([f])
     assert AudioResource.objects.first().title == 'Custom Tag Title'
 

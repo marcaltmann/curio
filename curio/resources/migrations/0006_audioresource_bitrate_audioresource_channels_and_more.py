@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('resources', '0005_audioresource_duration'),
     ]
@@ -13,16 +12,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='audioresource',
             name='bitrate',
-            field=models.PositiveIntegerField(blank=True, null=True, verbose_name='bitrate'),
+            field=models.PositiveIntegerField(
+                blank=True, null=True, verbose_name='bitrate'
+            ),
         ),
         migrations.AddField(
             model_name='audioresource',
             name='channels',
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='channels'),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name='channels'
+            ),
         ),
         migrations.AddField(
             model_name='audioresource',
             name='sample_rate',
-            field=models.PositiveIntegerField(blank=True, null=True, verbose_name='sample rate'),
+            field=models.PositiveIntegerField(
+                blank=True, null=True, verbose_name='sample rate'
+            ),
         ),
     ]

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('resources', '0003_alter_audioresource_options_and_more'),
     ]

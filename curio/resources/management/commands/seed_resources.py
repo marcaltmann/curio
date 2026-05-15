@@ -6,9 +6,27 @@ from django.core.management.base import BaseCommand
 from curio.resources.models import AudioResource
 
 SAMPLES = [
-    {'title': 'Morning Meditation', 'duration': timedelta(minutes=10, seconds=32), 'bitrate': 128000, 'sample_rate': 44100, 'channels': 2},
-    {'title': 'Focus Music', 'duration': timedelta(minutes=45, seconds=0), 'bitrate': 192000, 'sample_rate': 44100, 'channels': 2},
-    {'title': 'Evening Wind Down', 'duration': timedelta(minutes=20, seconds=15), 'bitrate': 128000, 'sample_rate': 44100, 'channels': 1},
+    {
+        'title': 'Morning Meditation',
+        'duration': timedelta(minutes=10, seconds=32),
+        'bitrate': 128000,
+        'sample_rate': 44100,
+        'channels': 2,
+    },
+    {
+        'title': 'Focus Music',
+        'duration': timedelta(minutes=45, seconds=0),
+        'bitrate': 192000,
+        'sample_rate': 44100,
+        'channels': 2,
+    },
+    {
+        'title': 'Evening Wind Down',
+        'duration': timedelta(minutes=20, seconds=15),
+        'bitrate': 128000,
+        'sample_rate': 44100,
+        'channels': 1,
+    },
 ]
 
 

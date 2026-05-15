@@ -7,7 +7,13 @@ from .models import AudioResource
 
 
 def extract_metadata(file):
-    result = {'title': None, 'duration': None, 'bitrate': None, 'sample_rate': None, 'channels': None}
+    result = {
+        'title': None,
+        'duration': None,
+        'bitrate': None,
+        'sample_rate': None,
+        'channels': None,
+    }
     try:
         audio = mutagen.File(file, easy=True)
     except mutagen.MutagenError:
@@ -30,7 +36,10 @@ def upload_audio_files(files):
     for f in files:
         meta = extract_metadata(f)
         f.seek(0)
-        title = meta['title'] or Path(f.name).stem.replace('-', ' ').replace('_', ' ').title()
+        title = (
+            meta['title']
+            or Path(f.name).stem.replace('-', ' ').replace('_', ' ').title()
+        )
         AudioResource.objects.create(
             title=title,
             file=f,
