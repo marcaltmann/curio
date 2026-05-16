@@ -8,7 +8,7 @@ from pathlib import Path
 import mutagen
 from PIL import Image, ImageCms
 
-from .models import AudioResource, ImageResource, VideoResource
+from .models import AudioResource, ImageResource, Metadata, VideoResource
 
 
 def extract_metadata(file):
@@ -88,12 +88,31 @@ def upload_image_files(files):
         meta = extract_image_metadata(f)
         f.seek(0)
         title = Path(f.name).stem.replace('-', ' ').replace('_', ' ').title()
-        ImageResource.objects.create(
+        resource = ImageResource.objects.create(
             title=title,
             file=f,
             file_size=f.size,
-            **meta,
+            width=meta['width'],
+            height=meta['height'],
+            produced_at=meta['taken_at'],
         )
+        exif_data = {
+            k: v
+            for k, v in {
+                'format': meta['format'],
+                'color_mode': meta['color_mode'],
+                'icc_profile': meta['icc_profile'],
+                'camera_make': meta['camera_make'],
+                'camera_model': meta['camera_model'],
+            }.items()
+            if v is not None
+        }
+        if exif_data:
+            Metadata.objects.create(
+                resource=resource,
+                type=Metadata.Type.EXIF,
+                data=exif_data,
+            )
 
 
 def _ffprobe(path):

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from curio.resources.models import AudioResource, ImageResource, VideoResource
+from curio.resources.models import AudioResource, ImageResource, Metadata, VideoResource
 from curio.resources.use_cases import (
     upload_audio_files,
     upload_image_files,
@@ -46,7 +46,10 @@ def image_list(request):
 
 def image_detail(request, pk):
     image = get_object_or_404(ImageResource, pk=pk)
-    return render(request, 'backoffice/content/image_detail.html', {'image': image})
+    exif = image.metadata.filter(type=Metadata.Type.EXIF).first()
+    return render(
+        request, 'backoffice/content/image_detail.html', {'image': image, 'exif': exif}
+    )
 
 
 def image_upload(request):

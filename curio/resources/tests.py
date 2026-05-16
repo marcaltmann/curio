@@ -179,9 +179,10 @@ def test_upload_image_files_stores_technical_metadata():
     with patch('curio.resources.use_cases.extract_image_metadata', return_value=meta):
         upload_image_files([f])
     resource = ImageResource.objects.first()
-    assert resource.format == 'JPEG'
-    assert resource.color_mode == 'RGB'
-    assert resource.icc_profile == 'sRGB'
+    exif = resource.metadata.get(type=Metadata.Type.EXIF)
+    assert exif.data['format'] == 'JPEG'
+    assert exif.data['color_mode'] == 'RGB'
+    assert exif.data['icc_profile'] == 'sRGB'
 
 
 @pytest.mark.django_db
@@ -197,9 +198,10 @@ def test_upload_image_files_stores_exif_metadata():
     with patch('curio.resources.use_cases.extract_image_metadata', return_value=meta):
         upload_image_files([f])
     resource = ImageResource.objects.first()
-    assert resource.taken_at == taken
-    assert resource.camera_make == 'Canon'
-    assert resource.camera_model == 'EOS R5'
+    assert resource.produced_at == taken
+    exif = resource.metadata.get(type=Metadata.Type.EXIF)
+    assert exif.data['camera_make'] == 'Canon'
+    assert exif.data['camera_model'] == 'EOS R5'
 
 
 @pytest.mark.django_db
@@ -209,8 +211,8 @@ def test_upload_image_files_stores_none_metadata_when_unreadable():
     resource = ImageResource.objects.first()
     assert resource.width is None
     assert resource.height is None
-    assert resource.format is None
-    assert resource.taken_at is None
+    assert resource.produced_at is None
+    assert resource.metadata.count() == 0
 
 
 @pytest.mark.django_db
