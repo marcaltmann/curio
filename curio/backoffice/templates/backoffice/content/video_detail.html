@@ -25,20 +25,6 @@
       <dd>
         {% if video.width and video.height %}{{ video.width }}×{{ video.height }}{% else %}–{% endif %}
       </dd>
-      <dt>{% trans "Bitrate" %}</dt>
-      <dd>{{ video.bitrate|kbps|default:"–" }}</dd>
-      <dt>{% trans "Video codec" %}</dt>
-      <dd>{{ video.video_codec|default:"–" }}</dd>
-      <dt>{% trans "Frame rate" %}</dt>
-      <dd>
-        {% if video.frame_rate_num and video.frame_rate_den %}
-          {{ video.frame_rate_num }}/{{ video.frame_rate_den }}
-        {% else %}
-          –
-        {% endif %}
-      </dd>
-      <dt>{% trans "Audio codec" %}</dt>
-      <dd>{{ video.audio_codec|default:"–" }}</dd>
       <dt>{% trans "File size" %}</dt>
       <dd>{{ video.file_size|filesizeformat }}</dd>
       <dt>{% trans "Created" %}</dt>

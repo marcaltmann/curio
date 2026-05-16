@@ -12,7 +12,6 @@
             <th>{% trans "Title" %}</th>
             <th data-align="end">{% trans "Duration" %}</th>
             <th data-align="end">{% trans "Dimensions" %}</th>
-            <th>{% trans "Video codec" %}</th>
             <th data-align="end">{% trans "File size" %}</th>
             <th>{% trans "Created" %}</th>
           </tr>
@@ -25,7 +24,6 @@
               <td data-align="end">
                 {% if video.width and video.height %}{{ video.width }}×{{ video.height }}{% else %}–{% endif %}
               </td>
-              <td>{{ video.video_codec|default:"–" }}</td>
               <td data-align="end">{{ video.file_size|filesizeformat }}</td>
               <td>{{ video.created_at }}</td>
             </tr>

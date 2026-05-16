@@ -22,15 +22,6 @@ class Resource(models.Model):
 class AudioResource(Resource):
     file = models.FileField(upload_to='audio/', verbose_name=_('file'))
     duration = models.DurationField(null=True, blank=True, verbose_name=_('duration'))
-    bitrate = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name=_('bitrate')
-    )
-    sample_rate = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name=_('sample rate')
-    )
-    channels = models.PositiveSmallIntegerField(
-        null=True, blank=True, verbose_name=_('channels')
-    )
 
     class Meta:
         verbose_name = _('audio resource')
@@ -42,22 +33,6 @@ class ImageResource(Resource):
     width = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('width'))
     height = models.PositiveIntegerField(
         null=True, blank=True, verbose_name=_('height')
-    )
-    format = models.CharField(
-        max_length=32, null=True, blank=True, verbose_name=_('format')
-    )
-    color_mode = models.CharField(
-        max_length=16, null=True, blank=True, verbose_name=_('color mode')
-    )
-    icc_profile = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_('ICC profile')
-    )
-    taken_at = models.DateTimeField(null=True, blank=True, verbose_name=_('taken at'))
-    camera_make = models.CharField(
-        max_length=64, null=True, blank=True, verbose_name=_('camera make')
-    )
-    camera_model = models.CharField(
-        max_length=64, null=True, blank=True, verbose_name=_('camera model')
     )
 
     class Meta:
@@ -74,21 +49,6 @@ class VideoResource(Resource):
     width = models.PositiveIntegerField(null=True, blank=True, verbose_name=_('width'))
     height = models.PositiveIntegerField(
         null=True, blank=True, verbose_name=_('height')
-    )
-    bitrate = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name=_('bitrate')
-    )
-    video_codec = models.CharField(
-        max_length=64, null=True, blank=True, verbose_name=_('video codec')
-    )
-    frame_rate_num = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name=_('frame rate numerator')
-    )
-    frame_rate_den = models.PositiveIntegerField(
-        null=True, blank=True, verbose_name=_('frame rate denominator')
-    )
-    audio_codec = models.CharField(
-        max_length=64, null=True, blank=True, verbose_name=_('audio codec')
     )
 
     class Meta:

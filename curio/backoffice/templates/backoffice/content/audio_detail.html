@@ -11,12 +11,6 @@
             <dd><a href="{{ audio.file.url }}">{{ audio.file.name }}</a></dd>
             <dt>{% trans "Duration" %}</dt>
             <dd>{{ audio.duration|duration|default:"–" }}</dd>
-            <dt>{% trans "Bitrate" %}</dt>
-            <dd>{{ audio.bitrate|kbps|default:"–" }}</dd>
-            <dt>{% trans "Sample rate" %}</dt>
-            <dd>{{ audio.sample_rate|khz|default:"–" }}</dd>
-            <dt>{% trans "Channels" %}</dt>
-            <dd>{{ audio.channels|channels_label|default:"–" }}</dd>
             <dt>{% trans "File size" %}</dt>
             <dd>{{ audio.file_size|filesizeformat }}</dd>
             <dt>{% trans "Created" %}</dt>
