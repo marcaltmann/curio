@@ -16,6 +16,7 @@ Create a PostgreSQL user and database:
 
 ```bash
 sudo -u postgres psql -c "CREATE USER curio WITH PASSWORD 'curio';"
+sudo -u postgres psql -c "ALTER ROLE curio CREATEDB;"
 sudo -u postgres psql -c "CREATE DATABASE curio OWNER curio;"
 ```
 

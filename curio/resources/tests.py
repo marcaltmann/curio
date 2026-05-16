@@ -4,8 +4,56 @@ from unittest.mock import patch
 import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-from .models import AudioResource, ImageResource, VideoResource
+from .models import AudioResource, ImageResource, Metadata, VideoResource
 from .use_cases import upload_audio_files, upload_image_files, upload_video_files
+
+
+@pytest.mark.django_db
+def test_metadata_can_be_attached_to_image_resource():
+    resource = ImageResource.objects.create(title='Photo', file_size=0)
+    meta = Metadata.objects.create(
+        resource=resource,
+        type=Metadata.Type.EXIF,
+        data={'Make': 'Canon', 'Model': 'EOS R5'},
+    )
+    assert resource.metadata.count() == 1
+    assert resource.metadata.first() == meta
+
+
+@pytest.mark.django_db
+def test_metadata_accessible_via_base_resource():
+    resource = AudioResource.objects.create(title='Podcast', file_size=0)
+    Metadata.objects.create(
+        resource=resource,
+        type=Metadata.Type.DUBLIN_CORE,
+        data={'creator': 'Alice', 'rights': 'CC BY 4.0'},
+    )
+    assert resource.resource_ptr.metadata.count() == 1
+
+
+@pytest.mark.django_db
+def test_metadata_deleted_with_resource():
+    resource = VideoResource.objects.create(title='Clip', file_size=0)
+    Metadata.objects.create(
+        resource=resource, type=Metadata.Type.CUSTOM, data={'foo': 'bar'}
+    )
+    resource.delete()
+    assert Metadata.objects.count() == 0
+
+
+@pytest.mark.django_db
+def test_multiple_metadata_types_per_resource():
+    resource = ImageResource.objects.create(title='Photo', file_size=0)
+    Metadata.objects.create(
+        resource=resource, type=Metadata.Type.EXIF, data={'ISO': 400}
+    )
+    Metadata.objects.create(
+        resource=resource, type=Metadata.Type.DUBLIN_CORE, data={'creator': 'Bob'}
+    )
+    assert resource.metadata.count() == 2
+    types = set(resource.metadata.values_list('type', flat=True))
+    assert types == {Metadata.Type.EXIF, Metadata.Type.DUBLIN_CORE}
+
 
 EMPTY_META = {
     'title': None,

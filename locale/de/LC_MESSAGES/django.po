@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-16 09:53+0200\n"
+"POT-Creation-Date: 2026-05-16 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,7 +145,7 @@ msgid "Color mode"
 msgstr "Farbmodus"
 
 #: curio/backoffice/templates/backoffice/content/image_detail.html:20
-#: curio/resources/models.py:45
+#: curio/resources/models.py:50
 msgid "ICC profile"
 msgstr "ICC-Profil"
 
@@ -225,92 +225,96 @@ msgstr "Mein Konto"
 msgid "Resources"
 msgstr "Ressourcen"
 
-#: curio/resources/models.py:6 curio/resources/models.py:31
-#: curio/resources/models.py:66
+#: curio/resources/models.py:6
 msgid "title"
 msgstr "Titel"
 
-#: curio/resources/models.py:7 curio/resources/models.py:32
-#: curio/resources/models.py:67
-msgid "file"
-msgstr "Datei"
-
-#: curio/resources/models.py:8 curio/resources/models.py:33
-#: curio/resources/models.py:68
+#: curio/resources/models.py:7
 msgid "file size"
 msgstr "Dateigröße"
 
-#: curio/resources/models.py:9 curio/resources/models.py:72
-msgid "duration"
-msgstr "Dauer"
-
-#: curio/resources/models.py:11 curio/resources/models.py:76
-msgid "bitrate"
-msgstr "Bitrate"
-
-#: curio/resources/models.py:14
-msgid "sample rate"
-msgstr "Abtastrate"
-
-#: curio/resources/models.py:17
-msgid "channels"
-msgstr "Kanäle"
-
-#: curio/resources/models.py:19 curio/resources/models.py:54
-#: curio/resources/models.py:90
+#: curio/resources/models.py:8 curio/resources/models.py:112
 msgid "created at"
 msgstr "Erstellt am"
 
-#: curio/resources/models.py:20 curio/resources/models.py:55
-#: curio/resources/models.py:91
+#: curio/resources/models.py:9 curio/resources/models.py:113
 msgid "updated at"
 msgstr "Aktualisiert am"
 
-#: curio/resources/models.py:23
+#: curio/resources/models.py:12 curio/resources/models.py:106
+msgid "resource"
+msgstr "Ressource"
+
+#: curio/resources/models.py:13
+msgid "resources"
+msgstr "Ressourcen"
+
+#: curio/resources/models.py:20 curio/resources/models.py:38
+#: curio/resources/models.py:66
+msgid "file"
+msgstr "Datei"
+
+#: curio/resources/models.py:21 curio/resources/models.py:70
+msgid "duration"
+msgstr "Dauer"
+
+#: curio/resources/models.py:23 curio/resources/models.py:76
+msgid "bitrate"
+msgstr "Bitrate"
+
+#: curio/resources/models.py:26
+msgid "sample rate"
+msgstr "Abtastrate"
+
+#: curio/resources/models.py:29
+msgid "channels"
+msgstr "Kanäle"
+
+#: curio/resources/models.py:33
 msgid "audio resource"
 msgstr "Audio-Ressource"
 
-#: curio/resources/models.py:24
+#: curio/resources/models.py:34
 msgid "audio resources"
 msgstr "Audio-Ressourcen"
 
-#: curio/resources/models.py:34 curio/resources/models.py:73
+#: curio/resources/models.py:39 curio/resources/models.py:71
 msgid "width"
 msgstr "Breite"
 
-#: curio/resources/models.py:36 curio/resources/models.py:74
+#: curio/resources/models.py:41 curio/resources/models.py:73
 msgid "height"
 msgstr "Höhe"
 
-#: curio/resources/models.py:39
+#: curio/resources/models.py:44
 msgid "format"
 msgstr "Format"
 
-#: curio/resources/models.py:42
+#: curio/resources/models.py:47
 msgid "color mode"
 msgstr "Farbmodus"
 
-#: curio/resources/models.py:47
+#: curio/resources/models.py:52
 msgid "taken at"
 msgstr "Aufgenommen am"
 
-#: curio/resources/models.py:49
+#: curio/resources/models.py:54
 msgid "camera make"
 msgstr "Kamerahersteller"
 
-#: curio/resources/models.py:52
+#: curio/resources/models.py:57
 msgid "camera model"
 msgstr "Kameramodell"
 
-#: curio/resources/models.py:58
+#: curio/resources/models.py:61
 msgid "image resource"
 msgstr "Bild-Ressource"
 
-#: curio/resources/models.py:59
+#: curio/resources/models.py:62
 msgid "image resources"
 msgstr "Bild-Ressourcen"
 
-#: curio/resources/models.py:70
+#: curio/resources/models.py:68
 msgid "poster"
 msgstr "Vorschaubild"
 
@@ -330,18 +334,42 @@ msgstr "Bildraten-Nenner"
 msgid "audio codec"
 msgstr "Audio-Codec"
 
-#: curio/resources/models.py:94
+#: curio/resources/models.py:92
 msgid "video resource"
 msgstr "Video-Ressource"
 
-#: curio/resources/models.py:95
+#: curio/resources/models.py:93
 msgid "video resources"
 msgstr "Video-Ressourcen"
 
-#: curio/settings.py:138
+#: curio/resources/models.py:98
+msgid "EXIF"
+msgstr "EXIF"
+
+#: curio/resources/models.py:99
+msgid "Dublin Core"
+msgstr "Dublin Core"
+
+#: curio/resources/models.py:100
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: curio/resources/models.py:109
+msgid "type"
+msgstr "Typ"
+
+#: curio/resources/models.py:111
+msgid "data"
+msgstr "Daten"
+
+#: curio/resources/models.py:116 curio/resources/models.py:117
+msgid "metadata"
+msgstr "Metadaten"
+
+#: curio/settings.py:149
 msgid "German"
 msgstr "Deutsch"
 
-#: curio/settings.py:139
+#: curio/settings.py:150
 msgid "English"
 msgstr "Englisch"
