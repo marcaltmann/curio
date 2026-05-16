@@ -1,7 +1,10 @@
+import os
 from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,14 +14,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2w+=02b$r^(@ea05$bwe!wj7*2_orpfjld1c7n5q-gx1!2veic'
+SECRET_KEY = os.environ['SECRET_KEY']
+
+DJANGO_ENV = os.environ.get('DJANGO_ENV', 'production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DJANGO_ENV == 'development'
 
-ALLOWED_HOSTS = []
-
-DJANGO_ENV = 'development'
+ALLOWED_HOSTS = (
+    os.environ.get('ALLOWED_HOSTS', '').split(',')
+    if os.environ.get('ALLOWED_HOSTS')
+    else []
+)
 
 
 # Application definition
@@ -85,8 +92,12 @@ WSGI_APPLICATION = 'curio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'curio'),
+        'USER': os.environ.get('DB_USER', 'curio'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 

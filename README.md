@@ -6,8 +6,22 @@ A media library built with Django.
 
 - Python 3.14+
 - Node.js (for frontend assets)
+- PostgreSQL
 
 ## Setup
+
+### Database
+
+Create a PostgreSQL user and database:
+
+```bash
+sudo -u postgres psql -c "CREATE USER curio WITH PASSWORD 'curio';"
+sudo -u postgres psql -c "CREATE DATABASE curio OWNER curio;"
+```
+
+Then copy `.env.example` to `.env` and fill in your credentials (the defaults match the commands above).
+
+### Application
 
 ```bash
 # Install Python dependencies
