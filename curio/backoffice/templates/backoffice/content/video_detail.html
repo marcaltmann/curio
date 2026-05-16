@@ -1,0 +1,48 @@
+{% extends "backoffice/base.html" %}
+{% load i18n curio_tags %}
+{% block title %}{{ video.title }} – {{ block.super }}{% endblock %}
+{% block content %}
+  <div class="container mt-lh">
+    <a href="{% url 'backoffice_video_list' %}">{% trans "Videos" %}</a>
+    <h1>{{ video.title }}</h1>
+    <video class="max-w:100%" controls {% if video.poster %}poster="{{ video.poster.url }}"{% endif %}>
+      <source src="{{ video.file.url }}">
+    </video>
+    <dl class="details">
+      <dt>{% trans "File" %}</dt>
+      <dd><a href="{{ video.file.url }}">{{ video.file.name }}</a></dd>
+      <dt>{% trans "Poster" %}</dt>
+      <dd>
+        {% if video.poster %}
+          <a href="{{ video.poster.url }}">{{ video.poster.name }}</a>
+        {% else %}
+          –
+        {% endif %}
+      </dd>
+      <dt>{% trans "Duration" %}</dt>
+      <dd>{{ video.duration|duration|default:"–" }}</dd>
+      <dt>{% trans "Dimensions" %}</dt>
+      <dd>
+        {% if video.width and video.height %}{{ video.width }}×{{ video.height }}{% else %}–{% endif %}
+      </dd>
+      <dt>{% trans "Bitrate" %}</dt>
+      <dd>{{ video.bitrate|kbps|default:"–" }}</dd>
+      <dt>{% trans "Video codec" %}</dt>
+      <dd>{{ video.video_codec|default:"–" }}</dd>
+      <dt>{% trans "Frame rate" %}</dt>
+      <dd>
+        {% if video.frame_rate_num and video.frame_rate_den %}
+          {{ video.frame_rate_num }}/{{ video.frame_rate_den }}
+        {% else %}
+          –
+        {% endif %}
+      </dd>
+      <dt>{% trans "Audio codec" %}</dt>
+      <dd>{{ video.audio_codec|default:"–" }}</dd>
+      <dt>{% trans "File size" %}</dt>
+      <dd>{{ video.file_size|filesizeformat }}</dd>
+      <dt>{% trans "Created" %}</dt>
+      <dd>{{ video.created_at }}</dd>
+    </dl>
+  </div>
+{% endblock %}

@@ -4,8 +4,8 @@ from unittest.mock import patch
 import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 
-from .models import AudioResource, ImageResource
-from .use_cases import upload_audio_files, upload_image_files
+from .models import AudioResource, ImageResource, VideoResource
+from .use_cases import upload_audio_files, upload_image_files, upload_video_files
 
 EMPTY_META = {
     'title': None,
@@ -180,3 +180,102 @@ def test_upload_image_files_derives_title_from_filename():
             upload_image_files([SimpleUploadedFile(filename, b'data')])
     titles = set(ImageResource.objects.values_list('title', flat=True))
     assert titles == {'My Photo', 'Beach Sunset', 'Portrait'}
+
+
+EMPTY_VIDEO_META = {
+    'duration': None,
+    'width': None,
+    'height': None,
+    'bitrate': None,
+    'video_codec': None,
+    'frame_rate_num': None,
+    'frame_rate_den': None,
+    'audio_codec': None,
+}
+
+
+@pytest.mark.django_db
+def test_upload_video_files_creates_resources():
+    f = SimpleUploadedFile('my-video.mp4', b'video data')
+    with patch(
+        'curio.resources.use_cases.extract_video_metadata',
+        return_value=EMPTY_VIDEO_META,
+    ):
+        upload_video_files([f])
+    assert VideoResource.objects.count() == 1
+    resource = VideoResource.objects.first()
+    assert resource.title == 'My Video'
+    assert resource.file_size == len(b'video data')
+
+
+@pytest.mark.django_db
+def test_upload_video_files_stores_duration_and_dimensions():
+    f = SimpleUploadedFile('video.mp4', b'video data')
+    meta = {
+        **EMPTY_VIDEO_META,
+        'duration': timedelta(seconds=120),
+        'width': 1920,
+        'height': 1080,
+    }
+    with patch('curio.resources.use_cases.extract_video_metadata', return_value=meta):
+        upload_video_files([f])
+    resource = VideoResource.objects.first()
+    assert resource.duration == timedelta(seconds=120)
+    assert resource.width == 1920
+    assert resource.height == 1080
+
+
+@pytest.mark.django_db
+def test_upload_video_files_stores_codec_metadata():
+    f = SimpleUploadedFile('video.mp4', b'video data')
+    meta = {
+        **EMPTY_VIDEO_META,
+        'video_codec': 'h264',
+        'audio_codec': 'aac',
+        'bitrate': 5000000,
+    }
+    with patch('curio.resources.use_cases.extract_video_metadata', return_value=meta):
+        upload_video_files([f])
+    resource = VideoResource.objects.first()
+    assert resource.video_codec == 'h264'
+    assert resource.audio_codec == 'aac'
+    assert resource.bitrate == 5000000
+
+
+@pytest.mark.django_db
+def test_upload_video_files_stores_frame_rate():
+    f = SimpleUploadedFile('video.mp4', b'video data')
+    meta = {**EMPTY_VIDEO_META, 'frame_rate_num': 30000, 'frame_rate_den': 1001}
+    with patch('curio.resources.use_cases.extract_video_metadata', return_value=meta):
+        upload_video_files([f])
+    resource = VideoResource.objects.first()
+    assert resource.frame_rate_num == 30000
+    assert resource.frame_rate_den == 1001
+
+
+@pytest.mark.django_db
+def test_upload_video_files_stores_none_metadata_when_unreadable():
+    f = SimpleUploadedFile('video.mp4', b'not real video')
+    upload_video_files([f])
+    resource = VideoResource.objects.first()
+    assert resource.duration is None
+    assert resource.width is None
+    assert resource.video_codec is None
+    assert resource.frame_rate_num is None
+
+
+@pytest.mark.django_db
+def test_upload_video_files_derives_title_from_filename():
+    cases = [
+        ('my-video.mp4', 'My Video'),
+        ('beach_holiday.mov', 'Beach Holiday'),
+        ('intro.mp4', 'Intro'),
+    ]
+    for filename, _ in cases:
+        with patch(
+            'curio.resources.use_cases.extract_video_metadata',
+            return_value=EMPTY_VIDEO_META,
+        ):
+            upload_video_files([SimpleUploadedFile(filename, b'data')])
+    titles = set(VideoResource.objects.values_list('title', flat=True))
+    assert titles == {'My Video', 'Beach Holiday', 'Intro'}

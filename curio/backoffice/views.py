@@ -1,7 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from curio.resources.models import AudioResource, ImageResource
-from curio.resources.use_cases import upload_audio_files, upload_image_files
+from curio.resources.models import AudioResource, ImageResource, VideoResource
+from curio.resources.use_cases import (
+    upload_audio_files,
+    upload_image_files,
+    upload_video_files,
+)
 
 
 def dashboard(request):
@@ -50,3 +54,25 @@ def image_upload(request):
         upload_image_files(request.FILES.getlist('files'))
         return redirect('backoffice_image_list')
     return render(request, 'backoffice/content/image_upload.html')
+
+
+def video_list(request):
+    return render(
+        request,
+        'backoffice/content/video_list.html',
+        {
+            'video_list': VideoResource.objects.order_by('-created_at'),
+        },
+    )
+
+
+def video_detail(request, pk):
+    video = get_object_or_404(VideoResource, pk=pk)
+    return render(request, 'backoffice/content/video_detail.html', {'video': video})
+
+
+def video_upload(request):
+    if request.method == 'POST':
+        upload_video_files(request.FILES.getlist('files'))
+        return redirect('backoffice_video_list')
+    return render(request, 'backoffice/content/video_upload.html')
