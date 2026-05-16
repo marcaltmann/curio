@@ -5,7 +5,7 @@
   <div class="container mt-lh">
     <a href="{% url 'backoffice_video_list' %}">{% trans "Videos" %}</a>
     <h1>{{ video.title }}</h1>
-    <video class="max-w:100%" controls {% if video.poster %}poster="{{ video.poster.url }}"{% endif %}>
+    <video class="video-player" controls {% if video.poster %}poster="{{ video.poster.url }}"{% endif %}>
       <source src="{{ video.file.url }}">
     </video>
     <dl class="details">

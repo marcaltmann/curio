@@ -15,3 +15,4 @@
 @import "./backoffice/blocks/data-table.css" layer(blocks);
 @import "./backoffice/blocks/details.css" layer(blocks);
 @import "./backoffice/blocks/sidebar.css" layer(blocks);
+@import "./backoffice/blocks/video-player.css" layer(blocks);
